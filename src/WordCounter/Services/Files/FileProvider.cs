@@ -14,6 +14,7 @@ internal class FileProvider : IFileProvider
         this.mainConfiguration = configuration.Value;
     }
 
+
     public IReadOnlyList<string> GetFileDefinitionsPaths()
     {
         if (!Directory.Exists(mainConfiguration.FilesDirectory)) throw new PathNotFoundException(mainConfiguration.FilesDirectory);

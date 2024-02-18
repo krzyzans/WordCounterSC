@@ -4,10 +4,7 @@ using WordCounter.Services.Printer;
 
 namespace WordCounter.Services.Words;
 
-/// <summary>
-/// Main service of application
-/// Responsible for manage tasks and printing result on the console
-/// </summary>
+/// <inheritdoc />
 internal class WordsProcessor : IWordsProcessor
 {
     private readonly IFileProvider filesProvider;
@@ -21,10 +18,7 @@ internal class WordsProcessor : IWordsProcessor
         this.printer = printer;
     }
 
-    /// <summary>
-    /// Main method
-    /// Manage tasks and start process for files
-    /// </summary>
+    /// <inheritdoc />
     public async Task CountWords()
     {
         var filesPaths = filesProvider.GetFileDefinitionsPaths();
@@ -33,9 +27,7 @@ internal class WordsProcessor : IWordsProcessor
         await Task.WhenAll(tasks);
     }
 
-    /// <summary>
-    /// Responsible for printing result after calculation
-    /// </summary>
+    /// <inheritdoc />
     public void PrintResult()
     {
         printer.Print();

@@ -5,6 +5,10 @@
     /// </summary>
     internal interface IFileProcessor
     {
+        /// <summary>
+        /// Core method, read file partially and update information in dictionary
+        /// </summary>
+        /// <param name="fileDefinitionPath"></param>
         internal Task ProcessFile(string fileDefinitionPath);
     }
 }

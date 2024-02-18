@@ -14,6 +14,7 @@ internal class FileDefinition : IFileDefinition
         this.partSize = partSize;
     }
 
+    /// <inheritdoc />
     public async Task<char[]> ReadPartSize()
     { 
         char[] memoryBuffer = new char[partSize];

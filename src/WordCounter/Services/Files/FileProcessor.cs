@@ -14,6 +14,7 @@ internal class FileProcessor : IFileProcessor
         this.dictionaryCounter = dictionaryCounter;
     }
 
+    /// <inheritdoc />
     public async Task ProcessFile(string fileDefinitionPath)
     {
         using var fileDefinition = filesProvider.GetFileDefinition(fileDefinitionPath);

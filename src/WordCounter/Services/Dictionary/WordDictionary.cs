@@ -12,10 +12,7 @@ internal class WordDictionary : IWordDictionary
 
     private readonly Dictionary<string, int> wordsCounter = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>
-    /// Method for secure concurrent add element to dictionary
-    /// </summary>
-    /// <param name="word">Key to add</param>
+    /// <inheritdoc />
     public string Add(string word)
     {
         lock (sync)
