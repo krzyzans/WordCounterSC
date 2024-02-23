@@ -23,16 +23,13 @@ internal class FileProcessor : IFileProcessor
         do
         {
             char[] readContent = await fileDefinition.ReadPartSize();
-
-            word = UpdateWordCounts(readContent, fileDefinition.EOF, word);
+            
+            UpdateWordCounts(readContent, fileDefinition.EOF, ref word);
         } while (!fileDefinition.EOF);
     }
 
-
-    private string UpdateWordCounts(char[] part, bool fileDefinitionEof, string word)
+    private void UpdateWordCounts(char[] part, bool fileDefinitionEof, ref string word)
     {
-        var words = new List<string>();
-
         foreach (var c in part)
         {
             if (char.IsLetterOrDigit(c))
@@ -51,7 +48,5 @@ internal class FileProcessor : IFileProcessor
         {
             word = dictionaryCounter.Add(word);
         }
-
-        return word;
     }
 }
