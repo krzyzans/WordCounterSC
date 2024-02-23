@@ -9,6 +9,6 @@
         /// Method for secure concurrent add element to dictionary
         /// </summary>
         /// <param name="word">Key to add</param>
-        internal string Add(string word);
+        internal void Add(string word);
     }
 }

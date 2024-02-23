@@ -30,8 +30,6 @@ namespace WordCounter
                 .Configure<MainConfiguration>(options => configuration.GetSection("MainConfiguration").Bind(options))
                 .BuildServiceProvider();
 
-            IConfigurationSection section = configuration.GetSection("MainConfiguration");
-
             return serviceProvider;
         }
 

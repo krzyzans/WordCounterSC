@@ -10,10 +10,10 @@ internal class WordDictionary : IWordDictionary
     /// </summary>
     private readonly object sync = new();
 
-    private readonly Dictionary<string, int> wordsCounter = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+    private readonly IDictionary<string, int> wordsCounter = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
     /// <inheritdoc />
-    public string Add(string word)
+    public void Add(string word)
     {
         lock (sync)
         {
@@ -21,11 +21,7 @@ internal class WordDictionary : IWordDictionary
             {
                 wordsCounter[word]++;
             }
-
-            word = "";
         }
-
-        return word;
     }
 
     /// <summary>

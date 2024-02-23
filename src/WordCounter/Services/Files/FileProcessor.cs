@@ -24,11 +24,11 @@ internal class FileProcessor : IFileProcessor
         {
             char[] readContent = await fileDefinition.ReadPartSize();
             
-            UpdateWordCounts(readContent, fileDefinition.EOF, ref word);
+            word = UpdateWordCounts(readContent, fileDefinition.EOF, word);
         } while (!fileDefinition.EOF);
     }
 
-    private void UpdateWordCounts(char[] part, bool fileDefinitionEof, ref string word)
+    private string UpdateWordCounts(char[] part, bool fileDefinitionEof, string word)
     {
         foreach (var c in part)
         {
@@ -40,13 +40,17 @@ internal class FileProcessor : IFileProcessor
             {
                 if (!string.IsNullOrEmpty(word))
                 {
-                    word = dictionaryCounter.Add(word);
+                    dictionaryCounter.Add(word);
+                    word = string.Empty;
                 }
             }
         }
         if (fileDefinitionEof && !string.IsNullOrEmpty(word))
         {
-            word = dictionaryCounter.Add(word);
+            dictionaryCounter.Add(word);
+            word = string.Empty;
         }
+
+        return word;
     }
 }
